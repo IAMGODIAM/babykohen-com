@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="en"><head>
 <title>Babykohen.com — In Loving Memory of Kohen Kartier Wiley</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,7 @@
 <meta name="twitter:title" content="Kohen Kartier Wiley — Forever One">
 <meta name="twitter:description" content="A memorial held in the open. Light a candle. Say his name.">
 
+<link rel="canonical" href="https://babykohen.com/">
 </head>
 <body>
 
@@ -308,7 +309,19 @@ input::placeholder,textarea::placeholder{color:#5d6878}
         <div style="border:1px solid rgba(126,162,255,.4);padding:12px;background:#07080b">
           <div style="border:1px solid rgba(198,205,217,.2);padding:14px">
             <div style="position:relative;aspect-ratio:4/5;width:100%">
-              <x-import component-from-global-scope="image-slot" id="memorial-portrait" shape="rect" fit="cover" placeholder="FAMILY-APPROVED PORTRAIT — DROP HERE" hint-size="100%,480px" style="position:absolute;inset:0"></x-import>
+              <div class="bk-portrait" role="img" aria-label="Memorial light for Kohen Kartier Wiley" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 38%,rgba(255,184,77,.22),transparent 55%),linear-gradient(180deg,#10131a 0%,#07080b 100%);overflow:hidden">
+                <svg viewBox="0 0 320 400" width="86%" height="92%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="bkHalo" cx="50%" cy="34%" r="42%"><stop offset="0%" stop-color="#ffb84d" stop-opacity=".55"/><stop offset="100%" stop-color="#ff8a1e" stop-opacity="0"/></radialGradient>
+                    <linearGradient id="bkFlame" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff6dd"/><stop offset="55%" stop-color="#ffc25e"/><stop offset="100%" stop-color="#ff8a1e"/></linearGradient>
+                  </defs>
+                  <ellipse cx="160" cy="150" rx="110" ry="120" fill="url(#bkHalo)"/>
+                  <path d="M160 72 C 196 128, 196 168, 160 198 C 124 168, 124 128, 160 72 Z" fill="url(#bkFlame)"/>
+                  <rect x="132" y="206" width="56" height="108" rx="8" fill="#f0e7d2"/>
+                  <text x="160" y="350" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#eef1f6" letter-spacing="10">KOHEN</text>
+                  <text x="160" y="378" text-anchor="middle" font-family="Courier New, monospace" font-size="11" fill="#8b96a6" letter-spacing="4">FOREVER ONE</text>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -431,7 +444,7 @@ input::placeholder,textarea::placeholder{color:#5d6878}
         <sc-if value="{{ notPosted }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;flex-direction:column;gap:26px">
             <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.24em;color:#7c8797">
-              <span>POST A PUBLIC WORD — IT APPEARS ON THE WALL BELOW</span><span style="color:#3e70ff">◆</span>
+              <span>POST A PUBLIC WORD — IT JOINS THE WALL FOR ALL WHO VISIT</span><span style="color:#3e70ff">◆</span>
             </div>
             <div style="display:flex;gap:14px;flex-wrap:wrap">
               <button type="button" sc-camel-on-click="{{ setToneLove }}" style="flex:1 1 240px;cursor:pointer;background:{{ toneLoveBg }};color:{{ toneLoveC }};border:1px solid {{ toneLoveBd }};font-family:'Big Shoulders Display',Impact,sans-serif;font-weight:800;font-size:21px;letter-spacing:.08em;text-transform:uppercase;padding:18px 20px">With Love — for Kohen</button>
@@ -459,10 +472,7 @@ input::placeholder,textarea::placeholder{color:#5d6878}
                 <input id="bk-state" value="{{ usState }}" sc-camel-on-change="{{ setUsState }}" sc-camel-max-length="{{ 16 }}" style="box-sizing:border-box;background:#07080b;border:1px solid rgba(198,205,217,.3);color:#eef1f6;font-family:'Courier Prime',monospace;font-size:17px;letter-spacing:.05em;padding:16px;outline:none">
               </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:10px">
-              <label for="bk-email" style="font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.24em;color:#7c8797">EMAIL — NEVER SHOWN, NEVER SHARED</label>
-              <input id="bk-email" type="email" value="{{ email }}" sc-camel-on-change="{{ setEmail }}" sc-camel-max-length="{{ 80 }}" style="box-sizing:border-box;background:#07080b;border:1px solid rgba(198,205,217,.3);color:#eef1f6;font-family:'Courier Prime',monospace;font-size:17px;letter-spacing:.05em;padding:16px;outline:none">
-            </div>
+
             <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;border-top:1px dashed rgba(198,205,217,.25);padding-top:26px">
               <button type="button" sc-camel-on-click="{{ postLetter }}" style="border:none;cursor:pointer;background:#0a52e8;color:#ffffff;font-family:'Big Shoulders Display',Impact,sans-serif;font-weight:800;font-size:22px;letter-spacing:.09em;text-transform:uppercase;padding:19px 36px" style-hover="background:#ffffff;color:#07080b">Post to the Wall</button>
               <span style="font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.14em;line-height:1.9;color:#7c8797">THE WALL SHOWS YOUR FIRST NAME, LAST INITIAL, AND CITY.<br>EVERY LETTER LIGHTS A CANDLE.</span>
@@ -498,6 +508,12 @@ input::placeholder,textarea::placeholder{color:#5d6878}
         <span style="font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.22em;color:#7c8797">EVERY LETTER LIGHTS A CANDLE</span>
       </div>
       <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px">
+        <sc-if value="{{ noLetters }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px solid rgba(198,205,217,.16);padding:36px 28px;text-align:center">
+            <div style="font-family:'Courier Prime',monospace;font-size:12px;letter-spacing:.26em;color:#7c8797">THE WALL IS OPEN</div>
+            <div style="margin-top:14px;font-family:Marcellus,serif;font-size:clamp(22px,2.4vw,28px);line-height:1.45;color:#dfe5ee">Be the first to leave a word for Kohen.</div>
+          </div>
+        </sc-if>
         <sc-for list="{{ letters }}" as="L" hint-placeholder-count="6">
           <div style="background:#0a0c11;border:1px solid rgba(198,205,217,.16);border-top:2px solid {{ L.accent }};padding:28px 28px 24px;display:flex;flex-direction:column;gap:18px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:14px">
@@ -561,7 +577,7 @@ input::placeholder,textarea::placeholder{color:#5d6878}
     <div style="max-width:1360px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px">
       <div>
         <div style="font-family:Marcellus,serif;font-size:16px;letter-spacing:.26em;color:#eef1f6">BABYKOHEN.COM</div>
-        <div style="margin-top:12px;font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.16em;line-height:2;color:#7c8797">A MEMORIAL HELD IN THE OPEN — DRAFT FOR FAMILY REVIEW.<br>LETTERS POST AFTER A SAFETY CHECK · FINAL LANGUAGE REQUIRES THE FAMILY’S BLESSING.</div>
+        <div style="margin-top:12px;font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.16em;line-height:2;color:#7c8797">A MEMORIAL HELD IN THE OPEN — NO DOORS, NO HOURS.<br>SAY HIS NAME. LIGHT A CANDLE. LEAVE A WORD.</div>
       </div>
       <div style="text-align:right">
         <div style="font-family:'Courier Prime',monospace;font-weight:700;font-size:12.5px;letter-spacing:.24em;color:#7ea2ff">KOHEN KARTIER WILEY · FOREVER ONE</div>
@@ -578,25 +594,17 @@ class Component extends DCLogic {
   state = {
     lit: false, litAt: null,
     userLetters: [],
-    tone: 'love', msg: '', first: '', last: '', email: '', city: '', usState: '',
+    tone: 'love', msg: '', first: '', last: '', city: '', usState: '', candlesTotal: 0, wallLoading: true,
     posted: false, formError: '', filter: 'all', copiedLink: false, copiedNote: false,
     note: "To the family of Kohen Kartier Wiley \u2014\n\nI lit a candle for your son today. I say his name with love, and I hold your family in my heart.\n\nYou do not grieve alone.\n\n\u2014 [Your name]"
   };
-  _seeds = [
-    { m: "One year of light, and the whole world felt it. We say your name tonight, sweet boy.", f: "Danielle", l: "R", c: "Memphis", s: "TN", tone: "love" },
-    { m: "He was ONE. You fired into a car with a baby inside it. We will not let this be quiet, and we will not let it be forgotten.", f: "Marcus", l: "J", c: "Southaven", s: "MS", tone: "anger" },
-    { m: "I lit a candle at my kitchen table for you, little one. It is still burning.", f: "Ada", l: "P", c: "Senatobia", s: "MS", tone: "love" },
-    { m: "To every official sitting on that footage: a mother is grieving and you owe her the truth. Release it. All of it.", f: "Tanya", l: "W", c: "Chicago", s: "IL", tone: "anger" },
-    { m: "Baby Kohen, you are loved beyond this life. Your family\u2019s arms are held by thousands tonight.", f: "The Carter Family", l: "", c: "Jackson", s: "MS", tone: "love" },
-    { m: "A system that fires into a car with a baby and then goes silent is not protecting anyone. Say his name. Demand the truth.", f: "C.", l: "B", c: "Oxford", s: "MS", tone: "anger" }
-  ];
+  _seeds = [];
   componentDidMount() {
     try {
       const t = localStorage.getItem('babykohen-candle-lit');
       if (t) this.setState({ lit: true, litAt: parseInt(t, 10) || null });
-      const w = JSON.parse(localStorage.getItem('babykohen-letters-v1') || '[]');
-      if (Array.isArray(w) && w.length) this.setState({ userLetters: w });
     } catch (e) {}
+    this._loadWall();
     let motion = this.props.motion ?? 'full';
     try { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) motion = 'minimal'; } catch (e) {}
     this._motion = motion;
@@ -812,21 +820,47 @@ class Component extends DCLogic {
     else if (r.s) out += ' \u00b7 ' + r.s.toUpperCase();
     return out;
   }
-  _postLetter() {
+  async _postLetter() {
     const m = (this.state.msg || '').trim();
     const f = (this.state.first || '').trim();
     if (m.length < 4) { this.setState({ formError: 'WRITE A FEW WORDS FIRST \u2014 THE WALL IS WAITING.' }); return; }
     if (!f) { this.setState({ formError: 'ADD YOUR FIRST NAME \u2014 IT SIGNS YOUR CANDLE.' }); return; }
+    if (this._posting) return;
+    this._posting = true;
+    this.setState({ formError: '' });
     const rec = {
       m: m.slice(0, 600), f: f.slice(0, 40),
       l: (this.state.last || '').trim().charAt(0),
       c: (this.state.city || '').trim().slice(0, 32),
       s: (this.state.usState || '').trim().slice(0, 16),
-      tone: this.state.tone, t: Date.now()
+      tone: this.state.tone
     };
-    const userLetters = [rec].concat(this.state.userLetters);
-    try { localStorage.setItem('babykohen-letters-v1', JSON.stringify(userLetters)); } catch (e) {}
-    this.setState({ userLetters, posted: true, formError: '', msg: '' });
+    try {
+      const r = await fetch('/api/letters', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(rec)
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) {
+        this.setState({ formError: (data && data.error) || 'COULD NOT POST JUST NOW. PLEASE TRY AGAIN.' });
+        this._posting = false;
+        return;
+      }
+      const userLetters = Array.isArray(data.letters) ? data.letters : [data.letter || { ...rec, t: Date.now() }].concat(this.state.userLetters);
+      const candlesTotal = typeof data.candles === 'number' ? data.candles : (this.state.candlesTotal || 0) + 1;
+      // also mark local candle lit
+      const now = Date.now();
+      try { localStorage.setItem('babykohen-candle-lit', String(now)); } catch (e) {}
+      if (this._motion === 'full' && this._F) this._F.igniteAt = performance.now();
+      this.setState({
+        userLetters, candlesTotal, posted: true, formError: '', msg: '',
+        lit: true, litAt: this.state.litAt || now
+      }, () => { this._startLoop && this._startLoop(); });
+    } catch (e) {
+      this.setState({ formError: 'COULD NOT POST JUST NOW. PLEASE TRY AGAIN.' });
+    }
+    this._posting = false;
   }
   async _copyText(text, key) {
     try { await navigator.clipboard.writeText(text); } catch (e) {
@@ -847,7 +881,7 @@ class Component extends DCLogic {
       const d = new Date(st.litAt);
       litSince = ' since ' + d.toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
     }
-    const all = st.userLetters.concat(this._seeds);
+    const all = Array.isArray(st.userLetters) ? st.userLetters : [];
     const shown = st.filter === 'all' ? all : all.filter(r => r.tone === st.filter);
     const letters = shown.map(r => ({
       m: '\u201c' + r.m + '\u201d',
@@ -859,18 +893,22 @@ class Component extends DCLogic {
     const fBg = (on) => on ? '#eef1f6' : 'transparent';
     const fC = (on) => on ? '#07080b' : '#9aa5b4';
     const shareTxt = encodeURIComponent('Kohen Kartier Wiley was one year old. Say his name. Light a candle for him. #JusticeForKohen');
-    const shareUrl = encodeURIComponent((typeof location !== 'undefined' ? location.href : ''));
+    const shareUrl = encodeURIComponent((typeof location !== 'undefined' ? (location.origin.includes('babykohen') ? location.origin + '/' : 'https://babykohen.com/') : 'https://babykohen.com/'));
     return {
       showCandle: this.props.showCandle ?? true,
       showJusticeLink: this.props.showJusticeLink ?? true,
       lit: st.lit, notLit: !st.lit, litSince,
-      candlesOther: String(all.length),
+      candlesOther: String(Math.max(0, (st.candlesTotal || all.length) - (st.lit ? 1 : 0))),
+      noLetters: all.length === 0 && !st.wallLoading,
+      hasLetters: all.length > 0,
       candleRef: this.candleRef, candleWrapRef: this.candleWrapRef,
       lightCandle: () => {
+        if (st.lit) return;
         const now = Date.now();
         try { localStorage.setItem('babykohen-candle-lit', String(now)); } catch (e) {}
         if (this._motion === 'full' && this._F) this._F.igniteAt = performance.now();
-        this.setState({ lit: true, litAt: now }, () => { this._startLoop(); if (this._motion !== 'full') this._drawCandle(1); });
+        this.setState({ lit: true, litAt: now, candlesTotal: (st.candlesTotal || 0) + 1 }, () => { this._startLoop(); if (this._motion !== 'full') this._drawCandle(1); });
+        this._lightCandleGlobal();
       },
       tone: st.tone,
       toneLoveBg: love ? '#0a52e8' : 'transparent', toneLoveC: love ? '#ffffff' : '#9aa5b4', toneLoveBd: love ? '#0a52e8' : 'rgba(198,205,217,.35)',
@@ -883,7 +921,6 @@ class Component extends DCLogic {
       msg: st.msg, setMsg: (e) => this.setState({ msg: e.target.value }),
       first: st.first, setFirst: (e) => this.setState({ first: e.target.value }),
       last: st.last, setLast: (e) => this.setState({ last: e.target.value }),
-      email: st.email, setEmail: (e) => this.setState({ email: e.target.value }),
       city: st.city, setCity: (e) => this.setState({ city: e.target.value }),
       usState: st.usState, setUsState: (e) => this.setState({ usState: e.target.value }),
       postLetter: () => this._postLetter(),

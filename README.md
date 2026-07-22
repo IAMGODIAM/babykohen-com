@@ -1,17 +1,23 @@
 # Babykohen.com
 
-Public memorial site for **Kohen Kartier Wiley** — forever one.
+Public memorial for **Kohen Kartier Wiley** — forever one.
 
-- Live: https://babykohen.com
-- Backup: https://babykohen.pages.dev
-- Stack: Cloudflare Pages (static), no external CDN runtime deps (React + DC runtime vendored)
+- **Live:** https://babykohen.com  
+- **Backup:** https://babykohen.pages.dev  
+- **Justice record:** https://justiceforkohen.com  
 
-## Features
-- Memorial service held in the open (no doors, no hours)
-- Light a candle (local persistence)
-- Public letter wall — love and anger
-- Family condolence note helper
-- Link out to justice record
+## What it is
+An open memorial service: light a candle, read the ode, leave a public word of love or anger, and carry his name.
+
+## Stack
+- Cloudflare Pages (static + Functions)
+- KV namespace `babykohen-wall` — shared letter wall + candle counter
+- Vendored React + DC runtime (no runtime CDN)
+
+## API
+- `GET /api/letters` → `{ letters, candles }`
+- `POST /api/letters` → post a wall letter (rate-limited)
+- `GET|POST /api/candles` → community candle count
 
 ## Deploy
 ```bash

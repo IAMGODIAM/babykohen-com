@@ -1,0 +1,8 @@
+name = "babykohen"
+compatibility_date = "2026-07-22"
+pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "WALL"
+id = "510060609ac943458e1fb43855ea38cd"
+preview_id = "510060609ac943458e1fb43855ea38cd"
