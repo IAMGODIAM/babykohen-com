@@ -15,9 +15,16 @@ An open memorial service: light a candle, read the ode, leave a public word of l
 - Vendored React + DC runtime (no runtime CDN)
 
 ## API
-- `GET /api/letters` → `{ letters, candles }`
-- `POST /api/letters` → post a wall letter (rate-limited)
+- `GET /api/letters` → `{ letters, candles }` (published wall only)
+- `POST /api/letters` → submit a wall letter (rate-limited) — submissions are
+  **held for review** in the KV `pending` queue and never publish directly
+- `GET /api/moderate` → list the review queue (header `x-mod-token`)
+- `POST /api/moderate` → `{ action: "approve" | "reject", id }` — approving
+  publishes the letter and counts its candle; rejecting drops it
 - `GET|POST /api/candles` → community candle count
+
+Moderation auth is the `MOD_TOKEN` Pages secret (production + preview);
+the token itself is held by Atlas, never in this repo.
 
 ## Deploy
 ```bash
