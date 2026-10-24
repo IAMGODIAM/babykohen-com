@@ -1,12 +1,18 @@
 /**
  * Public letter wall for babykohen.com
- * GET  /api/letters  -> { letters: [...], candles: number }
- * POST /api/letters  -> { ok, letter, candles }
+ * GET  /api/letters  -> { letters: [...], candles: number }   (published only)
+ * POST /api/letters  -> { ok, held: true, candles }
+ *
+ * Submissions are HELD for review in the KV "pending" queue and never
+ * publish directly. A moderator approves or rejects them through
+ * /api/moderate (see functions/api/moderate.js). This matches the
+ * site's promise: "Every candle is reviewed before publication."
  *
  * Env: WALL (KV)
  */
 
 const MAX_LETTERS = 500;
+const MAX_PENDING = 500;
 const MAX_MSG = 600;
 const MIN_MSG = 4;
 const RATE_WINDOW_SEC = 120;
@@ -79,6 +85,11 @@ async function readWall(env) {
   };
 }
 
+async function readPending(env) {
+  const pending = (await env.WALL.get("pending", "json")) || [];
+  return Array.isArray(pending) ? pending : [];
+}
+
 export async function onRequestOptions() {
   return cors(new Response(null, { status: 204 }));
 }
@@ -114,15 +125,18 @@ export async function onRequestPost({ request, env }) {
     const v = validLetter(body || {});
     if (v.error) return json({ error: v.error }, 400);
 
+    // Hold for review — never publish directly. The letter joins the
+    // public wall only when a moderator approves it via /api/moderate.
     const wall = await readWall(env);
-    const letters = [v.letter].concat(wall.letters).slice(0, MAX_LETTERS);
-    const candles = wall.candles + 1;
-
-    await env.WALL.put("letters", JSON.stringify(letters));
-    await env.WALL.put("candles", String(candles));
+    const pending = await readPending(env);
+    if (pending.length >= MAX_PENDING) {
+      return json({ error: "THE WALL IS FULL JUST NOW. PLEASE TRY AGAIN SOON." }, 503);
+    }
+    const held = { ...v.letter, id: crypto.randomUUID() };
+    await env.WALL.put("pending", JSON.stringify([held].concat(pending)));
     await env.WALL.put(rateKey, "1", { expirationTtl: RATE_WINDOW_SEC });
 
-    return json({ ok: true, letter: v.letter, candles, letters: letters.slice(0, 200) });
+    return json({ ok: true, held: true, candles: wall.candles });
   } catch (e) {
     return json({ error: "COULD NOT POST JUST NOW. PLEASE TRY AGAIN." }, 500);
   }
