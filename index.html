@@ -730,11 +730,11 @@ class Component extends DCLogic {
   }
   async _loadWall() {
     try {
-      const r = await fetch('https://iam-god-iam-executive-board-copy-fe96fc50.base44.app/functions/kohenWall', { headers: { 'Accept': 'application/json' } });
+      const r = await fetch('/api/letters', { headers: { 'Accept': 'application/json' } });
       const data = await r.json().catch(() => ({}));
       this.setState({
         userLetters: Array.isArray(data.letters) ? data.letters : [],
-        candlesTotal: typeof data.total === 'number' ? data.total : 0,
+        candlesTotal: typeof data.candles === 'number' ? data.candles : (typeof data.total === 'number' ? data.total : (Array.isArray(data.letters) ? data.letters.length : 0)),
         wallLoading: false
       });
     } catch (e) {
@@ -941,7 +941,7 @@ class Component extends DCLogic {
       s: (this.state.usState || '').trim().slice(0, 16)
     };
     try {
-      const r = await fetch('https://iam-god-iam-executive-board-copy-fe96fc50.base44.app/functions/kohenWall', {
+      const r = await fetch('/api/letters', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(rec)
